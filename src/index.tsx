@@ -1,5 +1,12 @@
+import { NativeEventEmitter, type EmitterSubscription } from 'react-native';
+import { type VolumeResult } from './NativeRTNVolumeListener';
+
 const RTNVolumeListener = require('./NativeRTNVolumeListener').default;
 
-export function multiply(a: number, b: number): number {
-  return RTNVolumeListener.multiply(a, b);
+const eventEmitter = new NativeEventEmitter(RTNVolumeListener);
+
+export function addVolumeListener(
+  callback: (result: VolumeResult) => void
+): EmitterSubscription {
+  return eventEmitter.addListener('RTNVolumeListenerEventVolume', callback);
 }

@@ -1,12 +1,14 @@
 
 #ifdef RCT_NEW_ARCH_ENABLED
 #import "RNRTNVolumeListenerSpec.h"
+#import <React/RCTEventEmitter.h>
 
-@interface RTNVolumeListener : NSObject <NativeRTNVolumeListenerSpec>
+@interface RTNVolumeListener : RCTEventEmitter <NativeRTNVolumeListenerSpec>
 #else
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 
-@interface RTNVolumeListener : NSObject <RCTBridgeModule>
+@interface RTNVolumeListener : RCTEventEmitter <RCTBridgeModule>
 #endif
 
 @end
