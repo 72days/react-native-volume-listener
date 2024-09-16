@@ -1,6 +1,6 @@
 {
   "name": "@seventytwodays/react-native-volume-listener",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Listen to changes in volume output",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
