@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { addVolumeListener } from 'react-native-volume-listener';
+import { addVolumeListener } from '@seventytwodays/react-native-volume-listener';
 
 export default function App() {
   const [listening, setListening] = useState(false);

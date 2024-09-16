@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-volume-listener": ["./src/index"]
+      "@seventytwodays/react-native-volume-listener": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

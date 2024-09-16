@@ -5,20 +5,25 @@ Listen to changes in volume output
 ## Installation
 
 ```sh
-npm install react-native-volume-listener
+npm install @seventytwodays/react-native-volume-listener
 ```
 
 ## Usage
 
-
 ```js
-import { multiply } from 'react-native-volume-listener';
+import { useState, useEffect } from 'react';
+import { addVolumeListener } from '@seventytwodays/react-native-volume-listener';
 
 // ...
+const [volume, setVolume] = useState(null);
 
-const result = multiply(3, 7);
+useEffect(() => {
+  const listener = addVolumeListener((vol) => {
+    setVolume(vol);
+  });
+  return () => listener.remove();
+}, []);
 ```
-
 
 ## Contributing
 
