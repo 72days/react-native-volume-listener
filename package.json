@@ -41,7 +41,7 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "prepare": "bob build",
+    "prepare": "yarn clean && bob build",
     "release": "release-it"
   },
   "keywords": [
@@ -183,12 +183,13 @@
   },
   "codegenConfig": {
     "name": "RNRTNVolumeListenerSpec",
-    "type": "all",
+    "type": "modules",
     "jsSrcsDir": "src",
     "outputDir": {
       "ios": "ios/generated",
       "android": "android/generated"
     },
+    "includesGeneratedCode": true,
     "android": {
       "javaPackageName": "com.volumelistener"
     }

@@ -18,8 +18,8 @@ import { addVolumeListener } from '@seventytwodays/react-native-volume-listener'
 const [volume, setVolume] = useState(null);
 
 useEffect(() => {
-  const listener = addVolumeListener((vol) => {
-    setVolume(vol);
+  const listener = addVolumeListener((result) => {
+    setVolume(result.volume);
   });
   return () => listener.remove();
 }, []);
