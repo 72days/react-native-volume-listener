@@ -189,7 +189,6 @@
       "ios": "ios/generated",
       "android": "android/generated"
     },
-    "includesGeneratedCode": true,
     "android": {
       "javaPackageName": "com.volumelistener"
     }
