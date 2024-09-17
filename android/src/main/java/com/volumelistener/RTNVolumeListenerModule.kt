@@ -11,10 +11,8 @@ import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.modules.core.DeviceEventManagerModule
 
-
-@ReactModule(name = RTNVolumeListenerModule.NAME)
-class RTNVolumeListenerModule(reactContext: ReactApplicationContext) :
-  NativeRTNVolumeListenerSpec(reactContext), LifecycleEventListener {
+class RTNVolumeListenerModule internal constructor(reactContext: ReactApplicationContext) :
+  RTNVolumeListenerSpec(reactContext), LifecycleEventListener {
 
   private val reactContext: ReactApplicationContext = reactContext
   private val volumeBR = VolumeBroadcastReceiver()
@@ -82,15 +80,18 @@ class RTNVolumeListenerModule(reactContext: ReactApplicationContext) :
     unregisterVolumeReceiver()
   }
 
+  @ReactMethod
   override fun addListener(eventName: String) {
     if (listenerCount == 0) {
       registerVolumeReceiver()
     }
     listenerCount += 1
   }
-
+  
+  @ReactMethod
   override fun removeListeners(count: Double) {
-    listenerCount -= count.toInt()
+    var countInt = count.toInt()
+    listenerCount -= countInt
     if (listenerCount == 0) {
       unregisterVolumeReceiver()
     }
@@ -108,3 +109,23 @@ class RTNVolumeListenerModule(reactContext: ReactApplicationContext) :
     const val NAME = "RTNVolumeListener"
   }
 }
+
+
+
+// class RTNVolumeListenerModule internal constructor(reactContext: ReactApplicationContext) :
+//   RTNVolumeListenerSpec(reactContext), LifecycleEventListener {
+
+//   @ReactMethod
+//   override fun addListener(eventName: String) {
+//     // 
+//   }
+
+//   fun removeListeners(count: Int) {
+//     // 
+//   }
+
+//   @ReactMethod
+//   override fun removeListeners(count: Double) {
+//     removeListeners(count.toInt())
+//   }
+// }
